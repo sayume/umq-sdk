@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	AccountId      = 1000000             //账户ID
-	QueueId        = "qid_xxxx|1"        //队列ID
+	AccountId      = "org-xxx"           //组织ID
+	QueueId        = "umq-xxx"           //队列ID
 	HttpAddr       = "http://xxxxx:6318" //服务地址
 	PublisherId    = "p1"                //发布者ID
 	PublisherToken = "xxxxx"             //发布者鉴权Token
