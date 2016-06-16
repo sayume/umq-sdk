@@ -7,15 +7,15 @@ import (
 )
 
 var (
-	OrganizationId = "org-xxx"           //组织ID
-	QueueId        = "umq-xxx"           //队列ID
-	HttpAddr       = "http://xxxxx:6318" //服务地址
-	PublisherId    = "p1"                //发布者ID
-	PublisherToken = "xxxxx"             //发布者鉴权Token
-	ConsumerId     = "c1"                //消费者ID
-	ConsumerToken  = "xxxxxx"            //消费者鉴权Token
-	WsAddr         = "http://xxxx:6318/" //Websocket服务IP
-	WsUrl          = "ws://xxxx:6318/ws" //Websocket服务IP
+	OrganizationId = 10000                                  //组织ID
+	QueueId        = "qid_xxxx|1"                           //队列ID
+	HttpAddr       = "http://xxxxx:6318"                    //服务地址
+	PublisherId    = "PID_e349dcbb67521fe082cf88d0892ef3f6" //发布者ID
+	PublisherToken = "xxxxx"                                //发布者鉴权Token
+	ConsumerId     = "CID_fafd13a67063ddd00d12a4c85664616d" //消费者ID
+	ConsumerToken  = "xxxxxx"                               //消费者鉴权Token
+	WsAddr         = "http://xxxx:6318/"                    //Websocket服务IP
+	WsUrl          = "ws://xxxx:6318/ws"                    //Websocket服务IP
 )
 
 type MsgHandler func(c chan string, Msg interface{})

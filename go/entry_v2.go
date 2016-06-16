@@ -12,24 +12,25 @@ func DoMsg(c chan string, Msg interface{}) {
 }
 
 func main() {
-	/*httpclient.OrganizationId = "org-xxx"
-	httpclient.QueueId = "qid_1458720189|2"
+	httpclient.OrganizationId = 25543
+	httpclient.QueueId = "umq-wmwhlk"
 	httpclient.HttpAddr = "http://192.168.153.41:6318"
-	httpclient.PublisherToken = "9ffc96bbb62fd694298f2a90dc5df4c6"
-	httpclient.ConsumerToken = "b49c4d7e09d29c762258f9860e69b7e3"
-	httpclient.WsAddr = "http//192.168.153.41:6138/"
-	httpclient.WsUrl = "ws://192.168.153.41:6318/ws"*/
+	httpclient.PublisherToken = "e349dcbb67521fe082cf88d0892ef3f6"
+	httpclient.ConsumerToken = "fafd13a67063ddd00d12a4c85664616d"
+	httpclient.WsAddr = "http://192.168.153.41:6138/"
+	httpclient.WsUrl = "ws://192.168.153.41:6318/ws"
 
 	//发送消息
 	//res, err := httpclient.PublishMsg("hello from xiaoding")
 	//主动拉取消息
-	//res, err := httpclient.GetMsg("10")
+	//res, err := httpclient.GetMsg("3")
 	//回执消息
-	//res, err := httpclient.AckMsg("qid_1458720189|2-141381")
+	//res, err := httpclient.AckMsg("umq-wmwhlk-9")
 	err := httpclient.SubscribeQueue(DoMsg)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	//fmt.Println(res)
 	return
 }
