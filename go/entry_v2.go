@@ -12,7 +12,7 @@ func DoMsg(c chan string, Msg interface{}) {
 }
 
 func main() {
-	/*httpclient.AccountId = 1000000
+	/*httpclient.OrganizationId = "org-xxx"
 	httpclient.QueueId = "qid_1458720189|2"
 	httpclient.HttpAddr = "http://192.168.153.41:6318"
 	httpclient.PublisherToken = "9ffc96bbb62fd694298f2a90dc5df4c6"

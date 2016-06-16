@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	AccountId      = "org-xxx"           //组织ID
+	OrganizationId = "org-xxx"           //组织ID
 	QueueId        = "umq-xxx"           //队列ID
 	HttpAddr       = "http://xxxxx:6318" //服务地址
 	PublisherId    = "p1"                //发布者ID
@@ -90,10 +90,10 @@ func GetMsg(Num string) (interface{}, error) {
 //订阅消息
 func SubscribeQueue(msgHandler MsgHandler) error {
 	type StartConsumeReq struct {
-		AccountId     uint64
-		QueueId       string
-		ConsumerId    string
-		ConsumerToken string
+		OrganizationId uint64
+		QueueId        string
+		ConsumerId     string
+		ConsumerToken  string
 	}
 
 	wsConn, err := websocket.Dial(WsUrl, "", WsAddr)
@@ -105,7 +105,7 @@ func SubscribeQueue(msgHandler MsgHandler) error {
 	fmt.Println("connect websocket successfully")
 
 	ws_data := new(StartConsumeReq)
-	ws_data.AccountId = uint64(AccountId)
+	ws_data.OrganizationId = uint64(OrganizationId)
 	ws_data.QueueId = QueueId
 	ws_data.ConsumerId = ConsumerId
 	ws_data.ConsumerToken = ConsumerToken
