@@ -3,6 +3,7 @@ package httpclient
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"umq-sdk/go/http_v2/websocket"
 )
 
@@ -48,6 +49,7 @@ func PublishMsg(Content string) (interface{}, error) {
 	pub_req := map[string]interface{}{
 		"Action":         "PublishMsg",
 		"QueueId":        QueueId,
+		"OrganizationId": strconv.FormatInt(int64(OrganizationId), 10),
 		"PublisherId":    PublisherId,
 		"PublisherToken": PublisherToken,
 		"Content":        Content,
@@ -68,11 +70,12 @@ func PublishMsg(Content string) (interface{}, error) {
 //主动拉取消息
 func GetMsg(Num string) (interface{}, error) {
 	get_req := map[string]interface{}{
-		"Action":        "GetMsg",
-		"QueueId":       QueueId,
-		"ConsumerId":    ConsumerId,
-		"ConsumerToken": ConsumerToken,
-		"Num":           Num,
+		"Action":         "GetMsg",
+		"QueueId":        QueueId,
+		"OrganizationId": strconv.FormatInt(int64(OrganizationId), 10),
+		"ConsumerId":     ConsumerId,
+		"ConsumerToken":  ConsumerToken,
+		"Num":            Num,
 	}
 
 	get_res, err := sendHttpRequest(HttpAddr, get_req, 100)
