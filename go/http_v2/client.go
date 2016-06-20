@@ -164,3 +164,23 @@ func SubscribeQueue(msgHandler MsgHandler) error {
 	}
 	return nil
 }
+
+//获取项目ID
+func GetOrganizationId(email, projectId string) (interface{}, error) {
+	org_req := map[string]interface{}{
+		"Action":            "GetOrganizationId",
+		"UserEmail":         email,
+		"OrganizationAlias": projectId,
+	}
+
+	org_res, err := sendHttpRequest(HttpAddr, org_req, 100)
+	if err != nil {
+		return nil, err
+	}
+	var org_res_body map[string]interface{}
+	err = json.Unmarshal(org_res, &org_res_body)
+	if err != nil {
+		return nil, err
+	}
+	return org_res_body, nil
+}

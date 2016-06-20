@@ -26,11 +26,13 @@ func main() {
 	//res, err := httpclient.GetMsg("3")
 	//回执消息
 	//res, err := httpclient.AckMsg("umq-wmwhlk-9")
-	err := httpclient.SubscribeQueue(DoMsg)
+	//err := httpclient.SubscribeQueue(DoMsg)
+	//获取项目Id
+	res, err := httpclient.GetOrganizationId("uhosttest@ucloud.cn", "org-23313")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	//fmt.Println(res)
+	fmt.Println(res)
 	return
 }
