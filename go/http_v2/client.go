@@ -136,6 +136,20 @@ func SubscribeQueue(msgHandler MsgHandler) error {
 		return err
 	}
 
+	ackMsg := make(chan string)
+	go func() {
+		for {
+			select {
+			case MsgId := <-ackMsg:
+				if MsgId == "" {
+					fmt.Println("MsgHandler error")
+				} else {
+					AckMsg(MsgId)
+				}
+			}
+		}
+	}()
+
 	for {
 		var sub_msg []byte
 		//TODO: 重试逻辑
@@ -151,16 +165,7 @@ func SubscribeQueue(msgHandler MsgHandler) error {
 			fmt.Println("Decoding msg error")
 		}
 
-		ackMsg := make(chan string)
 		go msgHandler(ackMsg, data)
-		select {
-		case MsgId := <-ackMsg:
-			if MsgId == "" {
-				fmt.Println("MsgHandler error")
-			} else {
-				AckMsg(MsgId)
-			}
-		}
 	}
 	return nil
 }

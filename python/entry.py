@@ -4,10 +4,12 @@
 import sys, os
 sys.path.append(os.path.abspath(os.path.join(__file__, '../http')))
 import client
+import json
 
 def msg_handler(msg):
 	print msg
-	return  ""
+	jMsg = json.loads(msg)
+	return  jMsg["Data"]["MsgId"]
 
 if __name__ == '__main__':
 	client.OrganizationId = 455
