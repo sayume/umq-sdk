@@ -56,7 +56,7 @@ def SubscribeQueue(msg_handler):
 	try:
 		#websocket.enableTrace(True)
 		ws = websocket.WebSocket()
-		ws.connect("ws://192.168.153.41:6318/ws")
+		ws.connect(WsUrl)
 		StartConsumeReq = {
 				"OrganizationId": OrganizationId,
 				"QueueId": QueueId,
